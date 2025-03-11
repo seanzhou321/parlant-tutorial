@@ -1,0 +1,20 @@
+[project]
+name = "basic-client"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Sean Zhou",email = "sean.zhou321@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12,<4.0"
+dependencies = [
+    "parlant-client (>=0.10.0,<0.11.0)"
+]
+
+[tool.poetry]
+packages = [{include = "basic_client", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
