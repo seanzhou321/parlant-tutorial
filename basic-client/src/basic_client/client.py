@@ -1,10 +1,23 @@
 from parlant.client import ParlantClient
 
 client = ParlantClient(base_url="http://localhost:8800")
-AGENT_ID="GBEH0Yr-7y"
+
+# Create an agent following https://www.parlant.io/docs/tutorial/building-the-skeleton/setup-your-agent
+AGENT_ID="EI6HZQWAe1"
 agent = client.agents.retrieve(AGENT_ID)
 
-session = client.sessions.create(agent_id=AGENT_ID, allow_greeting=False)
+CUSTOMER_ID="CkHAYIsGpB"
+customer = client.customers.retrieve(CUSTOMER_ID)
+
+session = client.sessions.create(
+    agent_id=AGENT_ID, 
+    customer_id=CUSTOMER_ID,
+    allow_greeting=False)
+
+VARIABLE_ID="o6TBtjD5Kx"
+variable = client.variables.retrieve(VARIABLE_ID)
+TAG_ID="4MV2dAy-88"
+tag = client.tags.retrieve(TAG_ID)
 
 while True:
     customer_message = input("Customer: ")
@@ -30,4 +43,4 @@ while True:
     assert agent_event.data
     agent_message = agent_event.data["message"]
 
-    print(f"Agent: {agent_message}")
+    print(f"{agent.name}: {agent_message}")
